@@ -30,7 +30,7 @@ sudo vi /etc/nginx/conf.d/default.conf
 #    location ~ \.php$ {
 #        fastcgi_pass    unix:/var/run/php-fpm/php-fpm.sock;
 #        fastcgi_index   index.php;
-#        fastcgi_param   SCRIPT_FILENAME  /var/www/html$fastcgi_script_name;
+#        fastcgi_param   SCRIPT_FILENAME  $document_root$fastcgi_script_name;
 #        include         fastcgi_params;
 #    }
 #}
