@@ -31,7 +31,8 @@ sudo vi /etc/nginx/conf.d/default.conf
 #        fastcgi_pass    unix:/var/run/php-fpm/php-fpm.sock;
 #        fastcgi_index   index.php;
 #        fastcgi_param   SCRIPT_FILENAME  $document_root$fastcgi_script_name;
-#        include         fastcgi_params;
+#        변경
+#        include         fastcgi_params; // --> include fastcgi.conf;
 #    }
 #}
 
@@ -95,7 +96,8 @@ sudo vi /etc/php-fpm.d/www.conf
 #                fastcgi_pass 127.0.0.1:9000;
 #                fastcgi_index index.php;
 #                fastcgi_param SCRIPT_NAME $document_root$fastcgi_script_name;
-#                include fastcgi_params;
+#               변경
+#               include fastcgi_params; // --> include fastcgi.conf;
 #        }
 #
 #        ssl                  on;
