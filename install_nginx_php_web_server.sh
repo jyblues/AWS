@@ -51,3 +51,61 @@ sudo vi /etc/php-fpm.d/www.conf
 #   ;listen.mode = 0666
 # listen.mode = 0664
 
+# SSL 설정
+# /etc/nginx/nginx.conf
+# http {
+#   server {
+#       listen 80;
+#       ...
+#
+#    여기부터
+#    server {
+#        listen       443;
+#        server_name  blackcoffee-studio.iptime.org;
+#        root         /usr/share/nginx/html;
+#
+#        index index.php index.html index.htm;
+#
+#        #charset koi8-r;
+#
+#        #access_log  /var/log/nginx/host.access.log  main;
+#
+#        location / {
+#        }
+#
+#        # redirect server error pages to the static page /40x.html
+#        #
+#        error_page  404              /404.html;
+#        location = /40x.html {
+#        }
+#
+#        # redirect server error pages to the static page /50x.html
+#        #
+#        error_page   500 502 503 504  /50x.html;
+#        location = /50x.html {
+#        }
+#
+#        # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+#        #
+#        #location ~ \.php$ {
+#        #    proxy_pass   http://127.0.0.1;
+#        #}
+#
+#        location ~ \.php$ {
+#                fastcgi_pass 127.0.0.1:9000;
+#                fastcgi_index index.php;
+#                fastcgi_param SCRIPT_NAME $document_root$fastcgi_script_name;
+#                include fastcgi_params;
+#        }
+#
+#        ssl                  on;
+#        ssl_certificate      /etc/nginx/conf.d/delta-server.crt;
+#        ssl_certificate_key  /etc/nginx/conf.d/delta-privatekey.pem;
+#
+#        ssl_session_timeout  5m;
+#
+#        ssl_protocols  SSLv2 SSLv3 TLSv1;
+#        ssl_ciphers  HIGH:!aNULL:!MD5;
+#        ssl_prefer_server_ciphers   on;
+#
+#    }
