@@ -118,3 +118,15 @@ sudo vi /etc/php-fpm.d/www.conf
 #        ssl_prefer_server_ciphers   on;
 #
 #    }
+
+# php-fpm 실행(서비스)
+systemctl start php-fpm
+systemctl enable php-fpm.service
+
+# nginx 실행(서비스)
+systemctl start nginx
+systemctl enable nginx
+
+# index.php 생성
+vi /usr/share/nginx/html/index.php
+<?php phpinfo(); ?>
