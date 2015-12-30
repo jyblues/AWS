@@ -23,6 +23,8 @@ sudo yum install -y php php-opcache php-common php-fpm php-mysql php-mcrypt php-
 
 
 # Nginx Configuration
+
+# /etc/nginx/conf.d/default.conf or /etc/nginx/nginx.conf
 sudo vi /etc/nginx/conf.d/default.conf
 
 #server{
