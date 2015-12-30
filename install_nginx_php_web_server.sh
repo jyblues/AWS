@@ -13,8 +13,13 @@ sudo yum install -y nginx18
 sudo firewall-cmd --permanent --zone=public --add-service=http
 sudo firewall-cmd --reload
 
-# PHP
-sudo yum install -y php70w php70w-opcache php70w-common php70w-fpm php70w-mysql php70w-mcrypt php70w-mbstring
+# PHP 7
+#sudo yum install -y php70w php70w-opcache php70w-common php70w-fpm php70w-mysql php70w-mcrypt php70w-mbstring
+# PHP 5
+sudo yum install -y php php-opcache php-common php-fpm php-mysql php-mcrypt php-mbstring php-cli
+
+# PHP timezone 설정
+# vi /etc/php.ini에서 date.timezone = Asia/Seoul로 수정
 
 
 # Nginx Configuration
