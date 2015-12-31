@@ -119,6 +119,10 @@ sudo vi /etc/php-fpm.d/www.conf
 #
 #    }
 
+# HTTP firewall setting
+sudo firewall-cmd --permanent --zone=public --add-service=https
+sudo firewall-cmd --reload
+
 # php-fpm 실행(서비스)
 systemctl start php-fpm
 systemctl enable php-fpm.service
