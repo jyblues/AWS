@@ -132,4 +132,5 @@ vi /usr/share/nginx/html/index.php
 <?php phpinfo(); ?>
 
 # 외부 MySQL 사용 설정
+# 참고 : http://www.systemhook.net/?tag=mysql
 setsebool -P httpd_can_network_connect 1
