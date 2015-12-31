@@ -130,3 +130,6 @@ systemctl enable nginx
 # index.php 생성
 vi /usr/share/nginx/html/index.php
 <?php phpinfo(); ?>
+
+# 외부 MySQL 사용 설정
+setsebool -P httpd_can_network_connect 1
