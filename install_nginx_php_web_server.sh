@@ -14,9 +14,9 @@ sudo firewall-cmd --permanent --zone=public --add-service=http
 sudo firewall-cmd --reload
 
 # PHP 7
-#sudo yum install -y php70w php70w-opcache php70w-common php70w-fpm php70w-mysql php70w-mcrypt php70w-mbstring
+#sudo yum install -y php70w php70w-common php70w-pear php70w-mcrypt php70w-cli php70w-xml php70w-pdo php70w-fpm php70w-mbstring php70w-process php70w-pecl-zendopcache php70w-mysqlnd
 # PHP 5
-sudo yum install -y php php-opcache php-common php-fpm php-mysql php-mcrypt php-mbstring php-cli
+sudo yum install -y php php-common php-pear php-mcrypt php-cli php-xml php-pdo php-fpm php-mbstring php-process php-pecl-zendopcache php-mysqlnd
 
 # PHP timezone 설정
 # vi /etc/php.ini에서 date.timezone = Asia/Seoul로 수정
