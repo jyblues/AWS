@@ -21,6 +21,10 @@ sudo yum install -y php php-common php-pear php-mcrypt php-cli php-xml php-pdo p
 # PHP timezone 설정
 # vi /etc/php.ini에서 date.timezone = Asia/Seoul로 수정
 
+# 아래 명령어는 PHP 파일이 정확히 일치하지 않는 경우, 비슷한 파일을 찾아주는 명령어인데, 기본적으로 “1”로 설정되어 있다. 
+# 하지만, 이 명령어는 보안에 매우 취약하기 때문에 0으로 수정한다.
+# cgi.fix_pathinfo=0
+
 
 # Nginx Configuration
 
