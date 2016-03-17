@@ -142,3 +142,7 @@ vi /usr/share/nginx/html/index.php
 # 외부 MySQL 사용 설정
 # 참고 : http://www.systemhook.net/?tag=mysql
 setsebool -P httpd_can_network_connect 1
+
+# 로그 디렉토리 쓰기 가능한 권한 변경
+# /var/www/html에 log 디렉토리에 파일로그를 기록한다면 소유권 변경 필요합니다.
+sudo chown -R apache:apache log
