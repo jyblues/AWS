@@ -19,6 +19,7 @@ sudo firewall-cmd --reload
 sudo yum install -y php php-common php-pear php-mcrypt php-cli php-xml php-pdo php-fpm php-mbstring php-process php-pecl-zendopcache php-mysqlnd
 
 # PHP timezone 설정
+# timezone을 설정하지 않으면 PHP 시간 관련 함수에서 예외가 발생하여 작동하지 않습니다.
 # vi /etc/php.ini에서 date.timezone = Asia/Seoul로 수정
 
 # 아래 명령어는 PHP 파일이 정확히 일치하지 않는 경우, 비슷한 파일을 찾아주는 명령어인데, 기본적으로 “1”로 설정되어 있다. 
