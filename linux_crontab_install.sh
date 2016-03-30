@@ -9,7 +9,7 @@ crontab -e
 # 위에 명령 후 editor 창이 열리면 아래 부분 추가
 #
 # 5분마다 특정 script(sh) 파일 실행(root 사용자로 실행)
-# */5 * * * * root [실행할 script]
+# */5 * * * * [실행할 경로의 script]
 
 # 실행할 script 파일 생성
 vi cron_test.sh
