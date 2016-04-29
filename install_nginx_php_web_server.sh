@@ -155,3 +155,7 @@ sudo chown -R apache:apache log
 
 # 시간대를 대한민국 서울로 변경
 sudo cp /usr/share/zoneinfo/Asia/Seoul /etc/localtime
+
+
+# python pip 설치
+# http://zetawiki.com/wiki/CentOS_python-pip_%EC%84%A4%EC%B9%98
