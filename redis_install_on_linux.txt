@@ -1,2 +1,4 @@
 # yum 설치
 yum -y install redis --enablerepo=remi --disableplugin=priorities
+
+# /etc/redis.conf 에 bind를 127.0.0.1 -> 0.0.0.0 으로 변경
