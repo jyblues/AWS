@@ -1,1 +1,2 @@
-http://jyblues.blogspot.kr/2015/11/redis.html
+# yum 설치
+yum -y install redis --enablerepo=remi --disableplugin=priorities
