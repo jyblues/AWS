@@ -42,6 +42,16 @@ sudo firewall-cmd --permanent --zone=public --add-service=http
 sudo firewall-cmd --reload
 ```
 
+
+### PHH 7 (remi repo 이용해서 설치)
+
+```
+yum install -y epel-release
+rpm -ivh http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+yum --enablerepo=remi update remi-release
+yum --enablerepo=remi-php70 install -y php php-fpm php-mysqlphp-mcrypt php-pdo php-common php-mbstring
+```
+
 ### PHP 7
 
 ```
