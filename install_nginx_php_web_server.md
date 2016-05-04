@@ -50,8 +50,158 @@ yum install -y epel-release
 rpm -ivh http://rpms.remirepo.net/enterprise/remi-release-7.rpm
 yum --enablerepo=remi update remi-release
 yum --enablerepo=remi-php70 install -y php php-fpm php-mysqlphp-mcrypt php-pdo php-common php-mbstring
+php -v
 ```
 
+* php-fpm 
+```
+systemctl start php-fpm   // php 시작 
+systemctl enable php-fpm  // php 부팅시 자동 실행
+systemctl status php-fpm  // php 상태 확인
+systemctl stop php-fpm    // php 정지
+```
+
+* php.ini 설정
+```
+vi /etc/php.ini
+```
+```
+cgi.fix_pathinfo = 0
+allow_url_fopen = Off
+expose_php = Off
+display_errors = Off
+```
+
+* www.conf 설정
+```
+vi /etc/php-fpm.d/www.conf
+```
+
+```
+user = nginx
+group = nginx
+ 
+listen.owner = nobody //
+listen.group = nobody // 앞에 주석 ; 을 지움
+```
+
+* nginx – php 연동 설정
+```
+vi /etc/nginx/conf.d/default.conf
+```
+
+nginx 1.8.0 default.conf 기본 설정
+```
+server {
+    listen       80;
+    server_name  localhost;
+
+    #charset koi8-r;
+    #access_log  /var/log/nginx/log/host.access.log  main;
+
+    location / {
+        root   /usr/share/nginx/html;
+        index  index.html index.htm;
+    }
+
+    #error_page  404              /404.html;
+
+    # redirect server error pages to the static page /50x.html
+    #
+    error_page   500 502 503 504  /50x.html;
+    location = /50x.html {
+        root   /usr/share/nginx/html;
+    }
+
+    # proxy the PHP scripts to Apache listening on 127.0.0.1:80
+    #
+    #location ~ \.php$ {
+    #    proxy_pass   http://127.0.0.1;
+    #}
+
+    # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+    #
+    #location ~ \.php$ {
+    #    root           html;
+    #    fastcgi_pass   127.0.0.1:9000;
+    #    fastcgi_index  index.php;
+    #    fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+    #    include        fastcgi_params;
+    #}
+
+    # deny access to .htaccess files, if Apache's document root
+    # concurs with nginx's one
+    #
+    #location ~ /\.ht {
+    #    deny  all;
+    #}
+}
+```
+nginx-php default.conf 설정 수정
+```
+ server {
+listen       80;
+server_name  localhost mydomain.com sub.domain.com;
+#charset koi8-r;
+#access_log  /var/log/nginx/log/host.access.log  main;
+root        /usr/share/nginx/html;
+index       index.php index.html index.htm;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+error_page  404              /404.html;
+
+# redirect server error pages to the static page /50x.html
+#
+error_page   500 502 503 504  /50x.html;
+location = /50x.html {
+root   /usr/share/nginx/html;
+}
+
+# proxy the PHP scripts to Apache listening on 127.0.0.1:80
+#
+#location ~ \.php$ {
+#    proxy_pass   http://127.0.0.1;
+#}
+
+# pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
+#
+    location ~ \.php$ {
+        try_files      $uri =404;
+        fastcgi_split_path_info ^(.+\.php)(/.+)$;
+        fastcgi_pass   127.0.0.1:9000;
+        fastcgi_index  index.php;
+        fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+        include        fastcgi_params;
+    }
+
+# deny access to .htaccess files, if Apache’s document root
+# concurs with nginx’s one
+#
+#location ~ /\.ht {
+#    deny  all;
+#}
+}
+```
+위와 같이 빨간색 글씨부분을 바꾼 후 저장하고 (server_name 에 자기 도메인 or IP) nginx 를 시작해준다.
+nginx 가 이미 실행중이라면 재시작해야 설정이 적용된다.
+
+```
+systemctl reload nginx
+```
+
+* nginx – php 가 제대로 연동됐는지 확인
+```sh
+vi /usr/share/nginx/html/phpinfo.php
+```
+/usr/share/nginx/html/phpinfo.php
+```php
+<?php
+phpinfo();
+?>
+```
 ### PHP 7
 
 ```
