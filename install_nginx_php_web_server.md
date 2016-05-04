@@ -13,6 +13,18 @@ sudo rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
 # nginx 1.8 install
 sudo yum install -y nginx18
 
+# 최신 stable 버전 설치 방법
+nginx의 docs를 보면 최근 stable 버젼으로 설치하는 방법이 있습니다. 
+http://nginx.org/en/linux_packages.html 
+
+/etc/yum.repos.d에 nginx.repo 파일을 만들어서 아래 내용을 넣습니다. 
+
+[nginx] 
+name=nginx repo 
+baseurl=http://nginx.org/packages/centos/7/$basearch/ 
+gpgcheck=0 
+enabled=1 
+
 # HTTP firewall setting
 sudo firewall-cmd --permanent --zone=public --add-service=http
 sudo firewall-cmd --reload
