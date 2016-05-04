@@ -3,18 +3,27 @@
 아래 주소 참조합니다.
 http://qiita.com/toshihirock/items/77835f83f679423874ea
 
+```
 Install linux update, followed by GCC and Make
 sudo yum -y update
 sudo yum install -y gcc make
+```
 
 ### CentOS/RHEL 7.x
+
+```
 sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 sudo rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
+```
 
 ### nginx 1.8 install
+
+```
 sudo yum install -y nginx18
+```
 
 ### 최신 stable 버전 설치 방법
+
 nginx의 docs를 보면 최근 stable 버젼으로 설치하는 방법이 있습니다. 
 http://nginx.org/en/linux_packages.html 
 
