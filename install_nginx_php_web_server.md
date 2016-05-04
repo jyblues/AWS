@@ -140,31 +140,9 @@ server {
 nginx-php default.conf 설정 수정
 ```
  server {
-listen       80;
-server_name  localhost mydomain.com sub.domain.com;
-#charset koi8-r;
-#access_log  /var/log/nginx/log/host.access.log  main;
+ server_name  localhost mydomain.com sub.domain.com;
 root        /usr/share/nginx/html;
 index       index.php index.html index.htm;
-
-    location / {
-        try_files $uri $uri/ =404;
-    }
-
-error_page  404              /404.html;
-
-# redirect server error pages to the static page /50x.html
-#
-error_page   500 502 503 504  /50x.html;
-location = /50x.html {
-root   /usr/share/nginx/html;
-}
-
-# proxy the PHP scripts to Apache listening on 127.0.0.1:80
-#
-#location ~ \.php$ {
-#    proxy_pass   http://127.0.0.1;
-#}
 
 # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
 #
@@ -176,16 +154,9 @@ root   /usr/share/nginx/html;
         fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
         include        fastcgi_params;
     }
-
-# deny access to .htaccess files, if Apache’s document root
-# concurs with nginx’s one
-#
-#location ~ /\.ht {
-#    deny  all;
-#}
 }
 ```
-위와 같이 빨간색 글씨부분을 바꾼 후 저장하고 (server_name 에 자기 도메인 or IP) nginx 를 시작해준다.
+위 부분들을 찾아서 수정합니다. 저장하고 (server_name 에 자기 도메인 or IP) nginx 를 시작해준다.
 nginx 가 이미 실행중이라면 재시작해야 설정이 적용된다.
 
 ```
