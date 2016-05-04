@@ -144,6 +144,10 @@ nginx-php default.conf 설정 수정
 root        /usr/share/nginx/html;
 index       index.php index.html index.htm;
 
+location / {
+        try_files $uri $uri/ =404;
+    }
+
 # pass the PHP scripts to FastCGI server listening on 127.0.0.1:9000
 #
     location ~ \.php$ {
