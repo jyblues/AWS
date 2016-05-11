@@ -9,20 +9,20 @@ sudo yum -y update
 sudo yum install -y gcc make
 ```
 
-### CentOS/RHEL 7.x
+#### CentOS/RHEL 7.x
 
 ```
 sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 sudo rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
 ```
 
-### nginx 1.8 install
+#### nginx 1.8 install
 
 ```
 sudo yum install -y nginx18
 ```
 
-### 최신 stable 버전 설치 방법
+#### 최신 stable 버전 설치 방법
 
 nginx의 docs를 보면 최근 stable 버젼으로 설치하는 방법이 있습니다. 
 http://nginx.org/en/linux_packages.html 
@@ -36,14 +36,14 @@ gpgcheck=0
 enabled=1 
 ```
 
-### HTTP firewall setting
+#### HTTP firewall setting
 ```
 sudo firewall-cmd --permanent --zone=public --add-service=http
 sudo firewall-cmd --reload
 ```
 
 
-### PHH 7 (remi repo 이용해서 설치)
+#### PHH 7 (remi repo 이용해서 설치)
 
 ```
 yum install -y epel-release
@@ -177,19 +177,19 @@ vi /usr/share/nginx/html/phpinfo.php
 phpinfo();
 ?>
 ```
-### PHP 7
+#### PHP 7
 
 ```
 sudo yum install -y php70w php70w-common php70w-pear php70w-mcrypt php70w-cli php70w-xml php70w-pdo php70w-fpm php70w-mbstring php70w-process php70w-pecl-zendopcache php70w-mysqlnd
 ```
 
-### PHP 5
+#### PHP 5
 
 ```
 sudo yum install -y php php-common php-pear php-mcrypt php-cli php-xml php-pdo php-fpm php-mbstring php-process php-pecl-zendopcache php-mysqlnd
 ```
 
-### PHP timezone 설정
+#### PHP timezone 설정
 
 timezone을 설정하지 않으면 PHP 시간 관련 함수에서 예외가 발생하여 작동하지 않습니다.
 vi /etc/php.ini에서 date.timezone = Asia/Seoul로 수정
@@ -199,7 +199,7 @@ vi /etc/php.ini에서 date.timezone = Asia/Seoul로 수정
 cgi.fix_pathinfo=0
 
 
-### Nginx Configuration
+#### Nginx Configuration
 
 ```
 /etc/nginx/conf.d/default.conf or /etc/nginx/nginx.conf
@@ -222,7 +222,7 @@ server{
 }
 ```
 
-### php-FPM Configuration
+#### php-FPM Configuration
 
 ```config_file
 sudo vi /etc/php-fpm.d/www.conf
@@ -240,7 +240,7 @@ sudo vi /etc/php-fpm.d/www.conf
 # listen.mode = 0664
 ```
 
-### SSL 설정
+#### SSL 설정
 ```
  /etc/nginx/nginx.conf
  http {
@@ -302,57 +302,57 @@ sudo vi /etc/php-fpm.d/www.conf
     }
 ```
 
-### HTTP firewall setting
+#### HTTP firewall setting
 
 ```
 sudo firewall-cmd --permanent --zone=public --add-service=https
 sudo firewall-cmd --reload
 ```
 
-### php-fpm 실행(서비스)
+#### php-fpm 실행(서비스)
 
 ```
 systemctl start php-fpm
 systemctl enable php-fpm.service
 ```
 
-### nginx 실행(서비스)
+#### nginx 실행(서비스)
 
 ```
 systemctl start nginx
 systemctl enable nginx
 ```
 
-### index.php 생성
+#### index.php 생성
 
 ```
 vi /usr/share/nginx/html/index.php
 <?php phpinfo(); ?>
 ```
 
-### 외부 MySQL 사용 설정
+#### 외부 MySQL 사용 설정
 참고 : http://www.systemhook.net/?tag=mysql
 ```
 setsebool -P httpd_can_network_connect 1
 ```
 
-### 로그 디렉토리 쓰기 가능한 권한 변경
+#### 로그 디렉토리 쓰기 가능한 권한 변경
 /var/www/html에 log 디렉토리에 파일로그를 기록한다면 소유권 변경 필요합니다.
 ```
 sudo chown -R apache:apache log
 ```
 
-### 시간대를 대한민국 서울로 변경
+#### 시간대를 대한민국 서울로 변경
 ```
 sudo cp /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 ```
 
-### python pip 설치
+#### python pip 설치
 ```
 http://zetawiki.com/wiki/CentOS_python-pip_%EC%84%A4%EC%B9%98
 ```
 
-### redis-py 설치
+#### redis-py 설치
 ```
 https://redislabs.com/python-redis
 ```
