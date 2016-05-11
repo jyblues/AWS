@@ -1,4 +1,4 @@
-### AmazonLinux에 nginx + PHP5.6 + PHP-fpm + PHP-redis 환경을 만들기
+# AmazonLinux에 nginx + PHP5.6 + PHP-fpm + PHP-redis 환경을 만들기
 
 아래 주소 참조합니다.
 http://qiita.com/toshihirock/items/77835f83f679423874ea
