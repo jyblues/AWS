@@ -49,7 +49,7 @@ sudo firewall-cmd --reload
 yum install -y epel-release
 rpm -ivh http://rpms.remirepo.net/enterprise/remi-release-7.rpm
 yum --enablerepo=remi update remi-release
-yum --enablerepo=remi-php70 install -y php php-fpm php-mysql php-mcrypt php-pdo php-common php-mbstring
+yum --enablerepo=remi-php70 install -y php php-fpm php-mysql php-mcrypt php-pdo php-common php-mbstring php-devel
 php -v
 ```
 
