@@ -53,6 +53,18 @@ yum --enablerepo=remi-php70 install -y php php-fpm php-mysql php-mcrypt php-pdo 
 php -v
 ```
 
+#### PHP 7 (다른 방법)
+
+```
+sudo yum install -y php70w php70w-common php70w-pear php70w-mcrypt php70w-cli php70w-xml php70w-pdo php70w-fpm php70w-mbstring php70w-process php70w-pecl-zendopcache php70w-mysqlnd
+```
+
+#### PHP 5
+
+```
+sudo yum install -y php php-common php-pear php-mcrypt php-cli php-xml php-pdo php-fpm php-mbstring php-process php-pecl-zendopcache php-mysqlnd
+```
+
 * php-fpm (시작/부팅시 자동 실행/상태 확인/정지)
 ```
 systemctl start php-fpm
@@ -178,17 +190,6 @@ vi /usr/share/nginx/html/phpinfo.php
 <?php
 phpinfo();
 ?>
-```
-#### PHP 7
-
-```
-sudo yum install -y php70w php70w-common php70w-pear php70w-mcrypt php70w-cli php70w-xml php70w-pdo php70w-fpm php70w-mbstring php70w-process php70w-pecl-zendopcache php70w-mysqlnd
-```
-
-#### PHP 5
-
-```
-sudo yum install -y php php-common php-pear php-mcrypt php-cli php-xml php-pdo php-fpm php-mbstring php-process php-pecl-zendopcache php-mysqlnd
 ```
 
 #### PHP timezone 설정
