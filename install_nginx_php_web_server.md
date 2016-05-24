@@ -104,7 +104,7 @@ listen.owner = nobody //
 listen.group = nobody // 앞에 주석 ; 을 지움
 ```
 
-* nginx – php 연동 설정
+### nginx – php 연동 설정
 ```
 vi /etc/nginx/conf.d/default.conf
 ```
@@ -222,24 +222,6 @@ server{
         include         fastcgi_params; // --> include fastcgi.conf;
     }
 }
-```
-
-#### php-FPM Configuration
-
-```config_file
-sudo vi /etc/php-fpm.d/www.conf
-
-# user = nginx
-# group = nginx
-#
-#   ;listen = 127.0.0.1:9000
-# listen = /var/run/php-fpm/php-fpm.sock
-#   ;listen.owner = nobody
-# listen.owner = nginx
-#   ;listen.group = nobody
-# listen.group = nginx
-#   ;listen.mode = 0666
-# listen.mode = 0664
 ```
 
 #### SSL 설정
