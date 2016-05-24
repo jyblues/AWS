@@ -337,3 +337,13 @@ sudo cp /usr/share/zoneinfo/Asia/Seoul /etc/localtime
 
 #### redis-py 설치
 링크 - https://redislabs.com/python-redis
+
+
+### MariaDB 설치
+
+```
+yum install -y mariadb mariadb-server
+systemctl enable mariadb.service
+systemctl start mariadb.service
+mysql_secure_installation
+```
