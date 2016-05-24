@@ -68,9 +68,9 @@ nginx 보안 정보 http://blog.1day1.org/460
 vi /etc/php.ini
 ```
 ```
-cgi.fix_pathinfo = 0
-allow_url_fopen = Off
-expose_php = Off
+cgi.fix_pathinfo = 0    // aaa.com/bad.hack/bbb.php  이런식으로 비정상적인 접근이 허용된다. 이를 막기 위해 설정을 변경해줘야 한다.
+allow_url_fopen = Off   // URL 객체에 파일처럼 접근할 수 있는 URL-판단 fopen 랩퍼를 활성화
+expose_php = Off        // HTTP 헤더에 PHP 버전이 노출된다. 노출되지 않게 합니다.
 display_errors = Off
 ```
 
