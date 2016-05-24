@@ -235,7 +235,8 @@ server{
     여기부터
     server {
         listen       443;
-        server_name  blackcoffee-studio.iptime.org;
+        # 사용 도메인을 설정합니다.
+        server_name  my_domain;
         root         /usr/share/nginx/html;
 
         index index.php index.html index.htm;
