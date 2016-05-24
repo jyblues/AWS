@@ -62,6 +62,7 @@ systemctl stop php-fpm
 ```
 
 * php.ini 설정
+nginx 보안 정보 http://blog.1day1.org/460
 ```
 vi /etc/php.ini
 ```
