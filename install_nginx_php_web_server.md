@@ -80,11 +80,16 @@ nginx 보안 정보 http://blog.1day1.org/460
 vi /etc/php.ini
 ```
 ```
-cgi.fix_pathinfo = 0    // aaa.com/bad.hack/bbb.php  이런식으로 비정상적인 접근이 허용된다. 이를 막기 위해 설정을 변경해줘야 한다.
+cgi.fix_pathinfo = 0    // aaa.com/bad.hack/bbb.php  이런식으로 비정상적인 접근이 허용된다. 이를 막기 위해 설정을 변경해줘야 한다. 이 명령어는 보안에 매우 취약하기 때문에 0으로 수정한다.
 allow_url_fopen = Off   // URL 객체에 파일처럼 접근할 수 있는 URL-판단 fopen 랩퍼를 활성화
 expose_php = Off        // HTTP 헤더에 PHP 버전이 노출된다. 노출되지 않게 합니다.
 display_errors = Off
 ```
+
+* PHP timezone 설정
+
+timezone을 설정하지 않으면 PHP 시간 관련 함수에서 예외가 발생하여 작동하지 않습니다.
+vi /etc/php.ini에서 date.timezone = Asia/Seoul로 수정
 
 * www.conf 설정
 ```
@@ -169,6 +174,9 @@ location / {
         fastcgi_split_path_info ^(.+\.php)(/.+)$;
         fastcgi_pass   127.0.0.1:9000;
         fastcgi_index  index.php;
+        #변경 전
+        #fastcgi_param  SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+        # 변경 후(아래처럼 해줘야 php 파일을 읽을수 있습니다.
         fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
         include        fastcgi_params;
     }
@@ -191,15 +199,6 @@ vi /usr/share/nginx/html/phpinfo.php
 phpinfo();
 ?>
 ```
-
-#### PHP timezone 설정
-
-timezone을 설정하지 않으면 PHP 시간 관련 함수에서 예외가 발생하여 작동하지 않습니다.
-vi /etc/php.ini에서 date.timezone = Asia/Seoul로 수정
-
-아래 명령어는 PHP 파일이 정확히 일치하지 않는 경우, 비슷한 파일을 찾아주는 명령어인데, 기본적으로 “1”로 설정되어 있다. 
-하지만, 이 명령어는 보안에 매우 취약하기 때문에 0으로 수정한다.
-cgi.fix_pathinfo=0
 
 
 #### Nginx Configuration
