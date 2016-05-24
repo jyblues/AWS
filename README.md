@@ -347,3 +347,22 @@ systemctl enable mariadb.service
 systemctl start mariadb.service
 mysql_secure_installation
 ```
+
+* 외부에서 접속 가능하게 설정
+
+참고 자료 : http://zetawiki.com/wiki/MySQL%EC%97%90_%EC%9B%90%EA%B2%A9_%EC%A0%91%EC%86%8D_%ED%97%88%EC%9A%A9
+```
+SELECT Host FROM mysql.user WHERE user='root';
+```
+모든 IP 허용
+```
+INSERT INTO mysql.user (host,user,password) VALUES ('%','root',password('패스워드'));
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%';
+FLUSH PRIVILEGES;
+```
+IP 대역 허용
+```
+INSERT INTO mysql.user (host,user,password) VALUES ('111.222.%','root',password('패스워드'));
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'111.222.%';
+FLUSH PRIVILEGES;
+```
