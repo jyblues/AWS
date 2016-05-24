@@ -53,12 +53,12 @@ yum --enablerepo=remi-php70 install -y php php-fpm php-mysql php-mcrypt php-pdo 
 php -v
 ```
 
-* php-fpm 
+* php-fpm (시작/부팅시 자동 실행/상태 확인/정지)
 ```
-systemctl start php-fpm   // php 시작 
-systemctl enable php-fpm  // php 부팅시 자동 실행
-systemctl status php-fpm  // php 상태 확인
-systemctl stop php-fpm    // php 정지
+systemctl start php-fpm
+systemctl enable php-fpm
+systemctl status php-fpm
+systemctl stop php-fpm
 ```
 
 * php.ini 설정
