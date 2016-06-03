@@ -1,7 +1,6 @@
-참고 : https://www.vultr.com/docs/install-ruby-on-rails-with-rbenv-on-centos-7
-
-
 #CentOS 7
+
+참고 : https://www.vultr.com/docs/install-ruby-on-rails-with-rbenv-on-centos-7
 
 먼저 필요한 패키지를 설치합니다.
 
