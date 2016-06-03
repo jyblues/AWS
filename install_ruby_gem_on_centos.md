@@ -1,3 +1,5 @@
+참고 : https://www.lesstif.com/pages/viewpage.action?pageId=17105179
+
 
 먼저 필요한 패키지를 설치합니다.
 
