@@ -49,6 +49,9 @@ WriteResult({ "nInserted" : 1 })
 { "_id" : ObjectId("53a3fa85a3484631e5c4cfdd"), "name" : "hello" }
 ```
 
+외부에서 인증하고 접속하기
+
+http://www.tutorialbook.co.kr/entry/MongoDB-%EC%97%90%EC%84%9C-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%9D%B8%EC%A6%9D-authorization-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0
 
 PHP용 MongoDB library
 
