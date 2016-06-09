@@ -51,7 +51,47 @@ WriteResult({ "nInserted" : 1 })
 
 외부에서 인증하고 접속하기
 
-http://www.tutorialbook.co.kr/entry/MongoDB-%EC%97%90%EC%84%9C-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%9D%B8%EC%A6%9D-authorization-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0
+참고 : http://www.tutorialbook.co.kr/entry/MongoDB-%EC%97%90%EC%84%9C-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%9D%B8%EC%A6%9D-authorization-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0
+
+```
+vi /etc/mongodb.conf
+
+# 모든 IP 접속 가능하게 설정
+bind_ip=0.0.0.0
+
+# 인증으로 접속 가능하게 설정
+auth=true
+# 인증이 없어도 접속 가능하게 설정
+#noauth=true
+```
+
+admin 계정 생성
+
+```
+mongo
+
+use admin
+db.createUser({ user: "<사용자 계정>",
+          pwd: "<비밀번호>",
+          roles: ["dbAdmin", "readWrite"]
+})
+ 
+ex)
+use test_db
+db.createUser({ user: "test_user",
+          pwd: "tutori2341",
+          roles: ["dbAdmin", "readWrite"]
+})
+```
+
+접속 방법
+```
+mongo --port <포트> -u "<사용자 계정>" -p "<비밀번호>" --authenticationDatabase "<databse>"
+ 
+ex)
+mongo --port 25321 -u "test_user" -p "tutori2341" --authenticationDatabase "test_db"
+</databse>
+```
 
 PHP용 MongoDB library
 
