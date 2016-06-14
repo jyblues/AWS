@@ -59,5 +59,5 @@ sudo make install
 빌드한 디렉토리에서 아래 명령 실행
 
 ```
-.installed.list
+sudo make uninstall
 ```
