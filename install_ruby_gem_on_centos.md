@@ -1,3 +1,6 @@
+# Ruby, gem, source, bundler(bundle) 설치
+
+
 ## 필요 패키지 설치
 
 참고 : https://www.vultr.com/docs/install-ruby-on-rails-with-rbenv-on-centos-7
@@ -74,4 +77,11 @@ sudo make install
 
 ```
 sudo make uninstall
+```
+
+
+## bundler(bundle) 설치
+
+```
+gem installer bundler
 ```
