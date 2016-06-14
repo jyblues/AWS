@@ -1,8 +1,6 @@
-# CentOS 7
+## 필요 패키지 설치
 
 참고 : https://www.vultr.com/docs/install-ruby-on-rails-with-rbenv-on-centos-7
-
-먼저 필요한 패키지를 설치합니다.
 
 ```
 sudo yum install -y git-core zlib zlib-devel gcc-c++ patch readline readline-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison curl sqlite-devel
