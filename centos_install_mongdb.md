@@ -4,9 +4,9 @@
 vi /etc/yum.repos.d/mongodb.repo
 
 // 추가
-[mongodb]
+[MongoDB]
 name=MongoDB Repository
-baseurl=http://downloads-distro.mongodb.org/repo/redhat/os/x86_64/
+baseurl=http://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.2/x86_64/
 gpgcheck=0
 enabled=1
 ```
@@ -40,9 +40,19 @@ chkconfig mongod on
 테스트
 
 ```
-$ mongo
-MongoDB shell version: 2.6.2
-connecting to: test
+$ mongod --version
+
+db version v3.2.0
+git version: 45d947729a0315accb6d4f15a6b06be6d9c19fe7
+OpenSSL version: OpenSSL 1.0.1e-fips 11 Feb 2013
+allocator: tcmalloc
+modules: none
+build environment:
+    distmod: rhel70
+    distarch: x86_64
+    target_arch: x86_64
+
+$ mongo    
 > db.users.insert({name:'hello'})
 WriteResult({ "nInserted" : 1 })
 > db.users.find({})
