@@ -100,7 +100,6 @@ mongo --port <포트> -u "<사용자 계정>" -p "<비밀번호>" --authenticati
  
 ex)
 mongo --port 25321 -u "test_user" -p "tutori2341" --authenticationDatabase "test_db"
-</databse>
 ```
 
 PHP용 MongoDB library
