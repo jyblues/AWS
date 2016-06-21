@@ -76,6 +76,7 @@ auth=true
 ```
 
 admin 계정 생성
+참고 : http://jmkjb.blogspot.kr/2015/06/mongo-db.html
 
 ```
 mongo
@@ -92,6 +93,19 @@ db.createUser({ user: "test_user",
           pwd: "tutori2341",
           roles: ["dbAdmin", "readWrite"]
 })
+
+생성된 전체 DB들에 대한 액세스 권한이 있는 계정 생성
+db.createUser({user: "dba",pwd: "dba",roles: [ { role: "userAdminAnyDatabase", db: "admin" } ]  })
+
+해당 DB(chatlog)에 대해 readWrite 권한을 가진 일반 사용자 계정 생성
+db.createUser( { user:"user", pwd: "password", roles: [{role:"readWrite", db: "chatlog"}] } )
+
+해당 DB(chatlog)에 대해 관리자 권한을 가진 사용자 계정 생성
+db.createUser( { user:"user", pwd: "password", roles: [{role:"userAdmin", db: "chatlog"}] } )
+
+일반 계정 삭제
+db.dropUser("user")
+
 ```
 
 접속 방법
