@@ -1,0 +1,122 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+$script = <<SCRIPT
+sudo yum install -y git-core zlib zlib-devel gcc-c++ patch readline readline-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison curl sqlite-devel
+
+gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 curl -sSL https://get.rvm.io | bash -s stable --ruby
+source /usr/local/rvm/scripts/rvm
+
+cd ~
+git clone git://github.com/sstephenson/rbenv.git .rbenv
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
+echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
+git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bash_profile
+source ~/.bash_profile
+
+rbenv install -l
+rbenv install -v 2.2.3
+rbenv rehash
+
+rbenv global 2.2.3
+
+rbenv versions
+
+curl -L http://www.opscode.com/chef/install.sh | sudo bash
+
+gem install chef
+SCRIPT
+
+def define_machine_name(config, name)
+  config.vm.provider "virtualbox" do |v|
+    v.name = name
+  end
+end
+
+VAGRANTFILE_API_VERSION = "2"
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.box = "base"
+  config.vm.box_url = "https://f0fff3908f081cb6461b407be80daf97f07ac418.googledrive.com/host/0BwtuV7VyVTSkUG1PM3pCeDJ4dVE/centos7.box"
+
+  # Configurate the virtual machine to use 2GB of RAM
+  config.vm.provider :virtualbox do |vb|
+    vb.customize ["modifyvm", :id, "--memory", "2048"]
+  end
+
+  define_machine_name config, "chef_solo"
+
+  config.vm.provision "shell", inline: $script
+end
+
+# Vagrant.configure(2) do |config|
+#     config.vm.define :chef_server do |cfg|
+#         cfg.vm.box = "base"
+#         cfg.vm.box_url = "http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-7.2_chef-provisionerless.box"
+#         cfg.vm.host_name = "chef-server"
+#         define_machine_name cfg, "chef-server"
+
+#         # cfg.vm.network :private_network, ip: "192.168.30.10"
+#         cfg.vm.network :public_network, ip: "192.168.219.200"
+#         # Guest Box의 80번 포트를 Host Box의 8080 포트로 forward합니다
+#         # cfg.vm.forward_port 80, 8080
+
+#         cfg.vm.synced_folder ".", "/vagrant", disabled: true
+
+#         # VirtualBox의 폴더 공유 기능을 이용해 Host와 Guest 간에 폴더를 공유합니다
+#         # cfg.vm.share_folder "v-data", "/vagrant_data", "vagrant_data"
+
+#         # Chef를 이용해 필요한 패키지를 설치합니다
+#         cfg.vm.provision :chef_solo do |chef|
+#           # Chef는 cookbook이라는 패키지를 통해 패키지 설치 과정을 정의합니다
+#           # cookbook은 미리 다운받아놓고 디렉토리를 지정할 수도 있고, tar.gz 파일로 업로드해두고 url을 지정할 수도 있습니다
+#           chef.cookbooks_path = "cookbooks"
+
+#           # Guest에 git을 설치합니다
+#           chef.add_recipe "git"
+
+#           # Guest에 erlang을 설치합니다
+#           chef.add_recipe "erlang"
+#         end
+#     end
+
+#     # config.vm.define :workstation do |cfg|
+#     #     cfg.vm.box = "base"
+#     #     cfg.vm.box_url = "http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-7.2_chef-provisionerless.box"
+#     #     # cfg.vm.network :private_network, ip: "192.168.30.20"
+#     #     cfg.vm.network :public_network, ip: "192.168.219.201"
+#     #     cfg.vm.host_name = "workstation"
+#     #     cfg.vm.synced_folder ".", "/vagrant", disabled: true
+#     #     define_machine_name cfg, "workstation"
+#     # end
+
+#     # config.vm.define :node01 do |cfg|
+#     #     cfg.vm.box = "base"
+#     #     cfg.vm.box_url = "http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-7.2_chef-provisionerless.box"
+#     #     # cfg.vm.network :private_network, ip: "192.168.30.21"
+#     #     cfg.vm.network :public_network, ip: "192.168.219.202"
+#     #     cfg.vm.host_name = "node01"
+#     #     cfg.vm.synced_folder ".", "/vagrant", disabled: true
+#     #     define_machine_name cfg, "node01"
+#     # end
+
+#     # config.vm.define :node02 do |cfg|
+#     #     cfg.vm.box = "base"
+#     #     cfg.vm.box_url = "http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-7.2_chef-provisionerless.box"
+#     #     # cfg.vm.network :private_network, ip: "192.168.30.22"
+#     #     cfg.vm.network :public_network, ip: "192.168.219.203"
+#     #     cfg.vm.host_name = "node02"
+#     #     cfg.vm.synced_folder ".", "/vagrant", disabled: true
+#     #     define_machine_name cfg, "node02"
+#     # end
+
+#     # config.vm.define :node03 do |cfg|
+#     #     cfg.vm.box = "base"
+#     #     cfg.vm.box_url = "http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-7.2_chef-provisionerless.box"
+#     #     # cfg.vm.network :private_network, ip: "192.168.30.23"
+#     #     cfg.vm.network :public_network, ip: "192.168.219.204"
+#     #     cfg.vm.host_name = "node03"
+#     #     cfg.vm.synced_folder ".", "/vagrant", disabled: true
+#     #     define_machine_name cfg, "node03"
+#     # end
+# end
