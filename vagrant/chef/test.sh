@@ -2,7 +2,7 @@ cd ~
 curl -L https://www.opscode.com/chef/install.sh | bash
 chef-solo -v
 
-wget http://github.com/opscode/chef-repo/tarball/maste
+wget http://github.com/opscode/chef-repo/tarball/master
 tar -zxf master
 mv chef-chef-repo* chef-repo
 rm master
