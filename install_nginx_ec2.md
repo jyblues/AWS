@@ -60,7 +60,8 @@ date.timezone = "UTC"
 ```
 [ec2-user ~]$ sudo usermod -a -G www ec2-user
 ```
-  #### Important
+
+#### Important
   로그아웃을 하고 다시 로그인해서 새 그룹을 선택해야 합니다. [exit] 명령을 사용하거나 터미널 창을 닫을 수 있습니다.
   
 * 로그아웃을 하고 다시 로그인한 다음, www 그룹에 대한 멤버십을 확인하십시오.
