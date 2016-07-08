@@ -10,6 +10,8 @@
 아래 주소 참조합니다.
 http://qiita.com/toshihirock/items/77835f83f679423874ea
 
+다른 방법 : https://gist.github.com/dragonjet/270cf0139df45d1b7690
+
 ```
 Install linux update, followed by GCC and Make
 sudo yum -y update
