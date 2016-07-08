@@ -11,18 +11,17 @@ sudo yum -y install php55 php55-fpm php55-devel php55-common php55-cli php55-pdo
 * Nginx Configuration ```vi /etc/nginx/nginx.conf```
 
 ```
-root /var/www/html;
+root /usr/share/nginx/html;
 
 location / {
-    root   /usr/share/nginx/html;
     index  index.php index.html index.htm;
 }
 
 location ~ \.php$ {
     fastcgi_pass    unix:/var/run/php-fpm/php-fpm.sock;
     fastcgi_index   index.php;
-    #fastcgi_param   SCRIPT_FILENAME  /var/www/html$fastcgi_script_name;
-    fastcgi_param   SCRIPT_FILENAME  /scripts$fastcgi_script_name;
+    fastcgi_param   SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+    #fastcgi_param   SCRIPT_FILENAME  /scripts$fastcgi_script_name;
     include         fastcgi_params;
 }
 ```
