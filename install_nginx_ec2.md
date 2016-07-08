@@ -82,10 +82,14 @@ AWS 자습서 참조 : http://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/
 ```
 
 * /var/www 및 그 하위 디렉터리의 디렉터리 권한을 변경해서 그룹 쓰기 권한을 추가하고 미래 하위 디렉터리에서 그룹 ID를 설정합니다.
-
 ```
 [ec2-user ~]$ sudo chmod 2775 /var/www
 [ec2-user ~]$ find /var/www -type d -exec sudo chmod 2775 {} \;
+```
+
+* write 권한이 필요하면 아래와 같이 설정합니다.
+```
+[ec2-user ~]$ sudo chmod 2770 /var/www
 ```
 
 * /var/www 및 그 하위 디렉터리의 파일 권한을 계속 변경해서 그룹 쓰기 권한을 추가합니다.
