@@ -1,4 +1,11 @@
-# AmazonLinux에 nginx + PHP5.6(or PHP7) + PHP-fpm + PHP-redis 환경을 만들기
+# EC2 Instance 생성 후 SSH 접속, AmazonLinux 에 nginx + PHP5.6(or PHP7) + PHP-fpm + PHP-redis 환경을 만들기
+
+
+## EC2 Instance 생성 후 SSH 접속
+외부(PuTTYGen)에서 생성한 public, private key 사용으로 접속 가능
+참고 : http://pyrasis.com/book/TheArtOfAmazonWebServices/Chapter07/02
+
+## AmazonLinux 에 nginx + PHP5.6(or PHP7) + PHP-fpm + PHP-redis 환경을 만들기
 
 아래 주소 참조합니다.
 http://qiita.com/toshihirock/items/77835f83f679423874ea
