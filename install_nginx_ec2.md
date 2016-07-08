@@ -48,6 +48,7 @@ date.timezone = "UTC"
 
 ### 파일 권한 설정
 
+AWS 자습서 참조 : http://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/install-LAMP.html
 
 * www 그룹을 인스턴스에 추가합니다.
 
