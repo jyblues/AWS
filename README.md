@@ -36,6 +36,8 @@ sudo yum install -y nginx18
 nginx의 docs를 보면 최근 stable 버젼으로 설치하는 방법이 있습니다. 
 http://nginx.org/en/linux_packages.html 
 
+좋은 정보 : http://www.solanara.net/solanara/nginx
+
 /etc/yum.repos.d에 nginx.repo 파일을 만들어서 아래 내용을 넣습니다. 
 ```
 [nginx] 
