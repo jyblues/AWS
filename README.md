@@ -73,7 +73,9 @@ sudo yum install -y php70w php70w-common php70w-pear php70w-mcrypt php70w-cli ph
 #### PHP 5
 
 ```
-sudo yum install -y php php-common php-pear php-mcrypt php-cli php-xml php-pdo php-fpm php-mbstring php-process php-pecl-zendopcache php-mysqlnd
+sudo yum -y install php55 php55-fpm php55-devel php55-common php55-cli php55-pdo php55-mysql php55-xml php55-gd php55-mbstring php-pear php55-mysqlnd php55-mcrypt php55-pecl-zendopcache
+sudo yum install php55w-pecl-redis
+sudo yum install php55-pecl-igbinary
 ```
 
 * php-fpm (시작/부팅시 자동 실행/상태 확인/정지)
