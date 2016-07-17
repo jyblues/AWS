@@ -380,7 +380,8 @@ GRANT ALL PRIVILEGES ON *.* TO 'root'@'111.222.%';
 FLUSH PRIVILEGES;
 ```
 
-** EC2 instance 에 PHP 내에서 RDS로 연결이 안되는 경우
+
+* EC2 instance 에 PHP 내에서 RDS로 연결이 안되는 경우
 
 꼭 PHP 에서만 나타나는 현상은 아닙니다.
 EC2 SecurityGroup Inbound 에 RDS(MySQL/Aura) 포트는 열어줘야하고, 반대로 RDS SecurityGroup Inbound 에서도 EC2 포트를 추가해줘야합니다.
