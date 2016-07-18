@@ -1,4 +1,9 @@
+* PHP 5.x.x 
+$ wget https://github.com/msgpack/msgpack-php/archive/msgpack-0.5.7.zip
+
+* PHP 7.x.x 
 $ wget https://github.com/msgpack/msgpack-php/zipball/master -O msgpack-php.zip
+
 $ unzip msgpack-php.zip 
 $ cd msgpack-msgpack-php-da24be3/
 $ phpize
