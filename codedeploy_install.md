@@ -18,7 +18,9 @@ $ bundle install
 	from /home/ec2-user/.gem/ruby/2.0/gems/bundler-1.10.6/bin/bundle:18:in`<top (required)> '
 	from / home / ec2-user / bin / bundle : 23 : in`load '
 	from / home / ec2-user / bin / bundle : 23 : in`<main> '
-	```
+```
+
+
 	
 # aws-codedeploy-agent 설치
 
