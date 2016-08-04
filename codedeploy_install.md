@@ -1,4 +1,23 @@
-# bundle install 시 아래 에러시 해결 방법
+# S3 ap-northeast-1 에서 설치
+
+```
+wget https://s3-ap-northeast-1.amazonaws.com/aws-codedeploy-ap-northeast-1/latest/install
+chmod +x ./install
+./install auto
+```
+
+# Gem으로 설치
+
+```
+git clone https://github.com/aws/aws-codedeploy-agent.git
+gem install bundler
+cd aws-codedeploy-agent
+bundle install
+rake clean && rake
+```
+
+
+## bundle install 시 아래 에러시 해결 방법
 
 ```
 $ bundle install
@@ -18,16 +37,4 @@ $ bundle install
 	from /home/ec2-user/.gem/ruby/2.0/gems/bundler-1.10.6/bin/bundle:18:in`<top (required)> '
 	from / home / ec2-user / bin / bundle : 23 : in`load '
 	from / home / ec2-user / bin / bundle : 23 : in`<main> '
-```
-
-
-	
-# aws-codedeploy-agent 설치
-
-```
-git clone https://github.com/aws/aws-codedeploy-agent.git
-gem install bundler
-cd aws-codedeploy-agent
-bundle install
-rake clean && rake
 ```
