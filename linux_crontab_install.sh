@@ -12,22 +12,41 @@ crontab -e
 # */5 * * * * [실행할 경로의 script]
 
 # 실행할 script 파일 생성
+```
 vi cron_test.sh
+```
+
 #! /usr/bin/sh
 # 방식 1(php 실행 파일로 실행)
 # 단점 : 여러 모듈 및 확장, 각종 캐시 및 전역 정보들이 없는 경우가 발생합니다.
+```
 /usr/bin/php [실행할 php 경로 및 파일명]
+```
 
 # 방식 2(curl 사용)
 # 장점 : 각종 캐시 및 전역 정보들이 정상적으로 작동합니다.
 # 단점 : ..
+```
 curl http://localhost/[실행할 php 파일명]
+```
 
 # script 실행 권한 추가
+```
 chmod +x [실행할 script 파일명]
+```
 
 # crond 재실행(이때는 crond 가 맞음)
+```
 systemctl restart crond
+```
 
 # 실행 확인
+```
 vi /etc/log/cron
+```
+
+# 부팅 후 script 실행
+```
+crontab -e
+@reboot /root/test_boot_start.sh
+```
