@@ -2,8 +2,10 @@
 
 ```
 vi /etc/yum.repos.d/mongodb.repo
+```
 
 // 추가
+```
 [MongoDB]
 name=MongoDB Repository
 baseurl=http://repo.mongodb.org/yum/redhat/$releasever/mongodb-org/3.2/x86_64/
