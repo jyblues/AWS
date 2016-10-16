@@ -53,13 +53,29 @@ build environment:
     distmod: rhel70
     distarch: x86_64
     target_arch: x86_64
-
-$ mongo    
-> db.users.insert({name:'hello'})
-WriteResult({ "nInserted" : 1 })
-> db.users.find({})
-{ "_id" : ObjectId("53a3fa85a3484631e5c4cfdd"), "name" : "hello" }
 ```
+
+관리자 계정 추가
+```
+$ mongo    
+> use admin
+> db.createUser( { user: "<username>",
+          pwd: "<password>",
+          roles: [ "userAdminAnyDatabase",
+                   "dbAdminAnyDatabase",
+                   "readWriteAnyDatabase"
+] } )
+```
+
+사용자 DB에 계정 추가
+```
+use myDB
+db.createUser({ user: "<username>",
+          pwd: "<password>",
+          roles: ["dbAdmin", "readWrite"]
+})
+```
+
 
 외부에서 인증하고 접속하기
 
@@ -69,45 +85,11 @@ WriteResult({ "nInserted" : 1 })
 vi /etc/mongodb.conf
 
 # 모든 IP 접속 가능하게 설정
-bind_ip=0.0.0.0
+#bindIp=0.0.0.0
 
 # 인증으로 접속 가능하게 설정
-auth=true
-# 인증이 없어도 접속 가능하게 설정
-#noauth=true
-```
-
-admin 계정 생성
-참고 : http://jmkjb.blogspot.kr/2015/06/mongo-db.html
-
-```
-mongo
-
-use admin
-db.createUser({ user: "<사용자 계정>",
-          pwd: "<비밀번호>",
-          roles: ["dbAdmin", "readWrite"]
-})
- 
-ex)
-use test_db
-db.createUser({ user: "test_user",
-          pwd: "tutori2341",
-          roles: ["dbAdmin", "readWrite"]
-})
-
-생성된 전체 DB들에 대한 액세스 권한이 있는 계정 생성
-db.createUser({user: "dba",pwd: "dba",roles: [ { role: "userAdminAnyDatabase", db: "admin" } ]  })
-
-해당 DB(chatlog)에 대해 readWrite 권한을 가진 일반 사용자 계정 생성
-db.createUser( { user:"user", pwd: "password", roles: [{role:"readWrite", db: "chatlog"}] } )
-
-해당 DB(chatlog)에 대해 관리자 권한을 가진 사용자 계정 생성
-db.createUser( { user:"user", pwd: "password", roles: [{role:"userAdmin", db: "chatlog"}] } )
-
-일반 계정 삭제
-db.dropUser("user")
-
+security:
+   authorization: enabled
 ```
 
 접속 방법
