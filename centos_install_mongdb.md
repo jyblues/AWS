@@ -30,13 +30,13 @@ exclude=mongodb-org,mongodb-org-server,mongodb-org-shell,mongodb-org-mongos,mong
 실행, 재시작, 중지
 
 ```
-systemctrl mongod start
+systemctrl start mongod
 ```
 
 부팅시 자동으로 실행하려면
 
 ```
-chkconfig mongod on
+systemctl enable mongod
 ```
 
 테스트
