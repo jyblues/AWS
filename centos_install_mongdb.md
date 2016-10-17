@@ -84,8 +84,8 @@ db.createUser({ user: "<username>",
 ```
 vi /etc/mongodb.conf
 
-# 모든 IP 접속 가능하게 설정
-#bindIp=0.0.0.0
+# 모든 IP 접속 가능하게 설정 comment
+#bindIp: 127.0.0.1
 
 # 인증으로 접속 가능하게 설정
 security:
