@@ -1,4 +1,4 @@
-저장소 추가
+## 저장소 추가
 
 ```
 vi /etc/yum.repos.d/mongodb.repo
@@ -13,7 +13,7 @@ gpgcheck=0
 enabled=1
 ```
 
-yum 으로 설치
+## yum 으로 설치
 
 ```
 yum -y install mongodb-org
@@ -27,7 +27,7 @@ vi /etc/yum.conf
 exclude=mongodb-org,mongodb-org-server,mongodb-org-shell,mongodb-org-mongos,mongodb-org-tools
 ```
 
-실행, 재시작, 중지
+## 실행, 재시작, 중지
 
 ```
 systemctrl start mongod
@@ -39,7 +39,7 @@ systemctrl start mongod
 systemctl enable mongod
 ```
 
-테스트
+## 테스트
 
 ```
 $ mongod --version
@@ -55,7 +55,8 @@ build environment:
     target_arch: x86_64
 ```
 
-관리자 계정 추가
+## 관리자 계정 추가
+
 ```
 $ mongo    
 > use admin
@@ -67,7 +68,8 @@ $ mongo
 ] } )
 ```
 
-사용자 DB에 계정 추가
+## 사용자 DB에 계정 추가
+
 ```
 use myDB
 db.createUser({ user: "<username>",
@@ -77,7 +79,7 @@ db.createUser({ user: "<username>",
 ```
 
 
-외부에서 인증하고 접속하기
+## 외부에서 인증하고 접속하기
 
 참고 : http://www.tutorialbook.co.kr/entry/MongoDB-%EC%97%90%EC%84%9C-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%9D%B8%EC%A6%9D-authorization-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0
 
@@ -92,7 +94,8 @@ security:
    authorization: enabled
 ```
 
-접속 방법
+## 접속 방법
+
 ```
 mongo --port <포트> -u "<사용자 계정>" -p "<비밀번호>" --authenticationDatabase "<databse>"
  
@@ -100,11 +103,11 @@ ex)
 mongo --port 25321 -u "test_user" -p "tutori2341" --authenticationDatabase "test_db"
 ```
 
-PHP용 MongoDB library
+# PHP용 MongoDB library
 
 https://github.com/mongodb/mongo-php-library
 
-# error & solution
+## error & solution
 Q: phpize Cannot find PHP headers in /usr/include/php
 A: yum install php-devel
 
