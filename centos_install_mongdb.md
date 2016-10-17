@@ -103,7 +103,7 @@ ex)
 mongo --port 25321 -u "test_user" -p "tutori2341" --authenticationDatabase "test_db"
 ```
 
-# PHP용 MongoDB library
+# PHP MongoDB library(new)
 
 https://github.com/mongodb/mongo-php-library
 
@@ -116,6 +116,13 @@ phpize
 make
 make install
 echo 'extension=mongodb.so' > /etc/php.d/mongodb.ini
+systemctl restart httpd
+```
+
+# PHP Mongo library(regacy)
+```
+pecl install mongo
+echo 'extension=mongo.so' > /etc/php.d/mongo.ini
 systemctl restart httpd
 ```
 
