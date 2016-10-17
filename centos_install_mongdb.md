@@ -107,6 +107,18 @@ mongo --port 25321 -u "test_user" -p "tutori2341" --authenticationDatabase "test
 
 https://github.com/mongodb/mongo-php-library
 
+```
+wget "https://github.com/mongodb/mongo-php-driver/archive/master.zip"
+unzip master.zip
+cd mongo-php-driver-master
+phpize
+./configure
+make
+make install
+echo 'extension=mongodb.so' > /etc/php.d/mongodb.ini
+systemctl restart httpd
+```
+
 ## error & solution
 Q: phpize Cannot find PHP headers in /usr/include/php
 A: yum install php-devel
