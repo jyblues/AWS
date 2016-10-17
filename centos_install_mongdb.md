@@ -104,3 +104,10 @@ PHP용 MongoDB library
 
 https://github.com/mongodb/mongo-php-library
 
+# error & solution
+Q: phpize Cannot find PHP headers in /usr/include/php
+A: yum install php-devel
+
+Q: mongodb configure: error: Cannot find OpenSSL's <evp.h>
+A: yum install openssl openssl-devel
+
