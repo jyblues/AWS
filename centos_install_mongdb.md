@@ -133,3 +133,6 @@ A: yum install php-devel
 Q: mongodb configure: error: Cannot find OpenSSL's <evp.h>
 A: yum install openssl openssl-devel
 
+# PHP Session Handler
+https://gist.github.com/dimzon/62eeb9b8561bcb9f0c6d
+
