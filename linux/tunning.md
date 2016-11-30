@@ -26,3 +26,16 @@ net.ipv4.tcp_window_scaling = 1
 * TCP 최대 버퍼 크기를 늘인다
 net.core.rmem_max = 16777216
 net.core.wmem_max = 16777216
+
+* 커널 소프트 레벨 튜닝
+- ulimit -n 32768
+- /proc/sys/fs/file-max: 4096 -> 32768
+- /proc/sys/fs/inode-max: 16384 -> 65536
+- /proc/sys/net/ipv4/tcp_keepalive_time: 7200 -> 1200
+- /proc/sys/net/ipv4/tcp_fin_timeout: 180 -> 30
+- /proc/sys/net/ipv4/tcp_sack: 1 -> 0
+- /proc/sys/net/ipv4/tcp_timestamps: 1 -> 0
+- /proc/sys/net/ipv4/tcp_syncookies: 0 -> 1
+- /proc/sys/net/ipv4/tcp_retries1: 7 -> 2
+- /proc/sys/net/ipv4/tcp_max_syn_backlog: 128 -> 8192
+- /proc/sys/net/ipv4/tcp_window_scaling: 1-> 0
