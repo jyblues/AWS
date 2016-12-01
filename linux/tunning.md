@@ -63,5 +63,7 @@ net.core.wmem_max = 16777216
 * other reference
 
   * http://bonegineer.blogspot.kr/2014/01/blog-post.html
-
   * http://hotpotato.tistory.com/93
+  * http://meetup.toast.com/posts/53 리눅스 서버의 TCP 네트워크 성능을 결정짓는 커널 파라미터 이야기 - 1편
+  * http://meetup.toast.com/posts/54 리눅스 서버의 TCP 네트워크 성능을 결정짓는 커널 파라미터 이야기 - 2편
+  * http://meetup.toast.com/posts/55 리눅스 서버의 TCP 네트워크 성능을 결정짓는 커널 파라미터 이야기 - 3편
