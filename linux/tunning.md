@@ -59,3 +59,6 @@ net.core.wmem_max = 16777216
   /proc/sys/net/ipv4/tcp_max_syn_backlog: 128 -> 8192
   /proc/sys/net/ipv4/tcp_window_scaling: 1-> 0
 ```
+
+* other reference
+http://bonegineer.blogspot.kr/2014/01/blog-post.html
