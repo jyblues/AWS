@@ -63,7 +63,10 @@ net.core.wmem_max = 16777216
 * time_wait 
   * http://tagnee.tistory.com/22 - TCP TIME-WAIT State 재사용(reuse), 재활용(recycle)의 차이점
   * http://kikiho.tistory.com/entry/Linux-TIMEWAIT-State-%EC%97%90-%EB%8C%80%ED%95%98%EC%97%AC - TIME_WAIT  (tcp_tw_reuse 
-
+  * http://sunyzero.tistory.com/198 - TCP의 TIME_WAIT를 없애는 법
+  * http://tech.kakao.com/2016/04/21/closewait-timewait/ - CLOSE_WAIT & TIME_WAIT 최종 분석
+  
+  
 * other reference
   * http://bonegineer.blogspot.kr/2014/01/blog-post.html - 리눅스 시스템 커널 파라메터 튜닝 값
   * http://hotpotato.tistory.com/93
