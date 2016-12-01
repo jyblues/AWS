@@ -62,5 +62,6 @@ net.core.wmem_max = 16777216
 
 * other reference
 
-** http://bonegineer.blogspot.kr/2014/01/blog-post.html
-** http://hotpotato.tistory.com/93
+  * http://bonegineer.blogspot.kr/2014/01/blog-post.html
+
+  * http://hotpotato.tistory.com/93
