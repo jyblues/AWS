@@ -1,3 +1,33 @@
+* 현재 tcp 상황 확인
+
+```
+  cat /proc/net/sockstat
+```
+
+* file open 개수 늘리기
+
+
+```
+# vi /etc/security/limits.conf  
+
+* soft nofile 65535
+* hard nofile 65535
+
+```
+
+
+* 사용자 별 max process 늘리기
+
+
+```
+# vi /etc/security/limits.conf  
+
+* hard nproc 65535
+* soft nproc 65535
+
+```
+
+
 * 브로드케스트에 응답하지 않게 한다.
   Smurf 공격을 예방할 수 있다.
 ```
@@ -76,3 +106,6 @@ net.core.wmem_max = 16777216
   * http://meetup.toast.com/posts/53 리눅스 서버의 TCP 네트워크 성능을 결정짓는 커널 파라미터 이야기 - 1편
   * http://meetup.toast.com/posts/54 리눅스 서버의 TCP 네트워크 성능을 결정짓는 커널 파라미터 이야기 - 2편
   * http://meetup.toast.com/posts/55 리눅스 서버의 TCP 네트워크 성능을 결정짓는 커널 파라미터 이야기 - 3편
+
+* service problem
+  * http://simp1e.tistory.com/39 nginx 서비스 도중 생긴일 (리눅스 시스템 자원 제한 변경)
