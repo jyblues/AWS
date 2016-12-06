@@ -27,6 +27,49 @@
 
 ```
 
+* 연결 backlog 늘리기
+
+
+```
+# vi /etc/security/sysctl.conf  
+
+net.core.netdev_max_backlog=30000
+```
+
+* socket 최대 connection 수 늘리기
+
+
+```
+# vi /etc/security/sysctl.conf  
+
+net.core.somaxconn=1024
+
+```
+
+
+* 웹서버와 같은 유형의 서버에서 high load에서는 사용자 소켓의 종료 진행에서 
+  TIME_WAIT 상태가 되는데 이 것의 양이 60초간 지속 된다는 것을 가정하고 이 값을 충분히 높여 주는 것이 좋음.  
+
+
+```
+# vi /etc/security/sysctl.conf  
+
+net.ipv4.tcp_max_tw_buckets=1800000
+
+```
+
+
+* 기존 TIME_WAIT 상태로 남아 있던 소켓을 재사용
+
+
+```
+# vi /etc/security/sysctl.conf  
+
+net.ipv4.tcp_timestamps=1
+net.ipv4.tcp_tw_reuse=1
+
+```
+
 
 * 브로드케스트에 응답하지 않게 한다.
   Smurf 공격을 예방할 수 있다.
