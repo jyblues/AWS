@@ -46,6 +46,17 @@ net.core.somaxconn=1024
 
 ```
 
+* tcp_fin_timeout 변경
+
+
+```
+# vi /etc/sysctl.conf  
+
+net.ipv4.tcp_fin_timeout=10
+
+```
+
+
 
 * 웹서버와 같은 유형의 서버에서 high load에서는 사용자 소켓의 종료 진행에서 
   TIME_WAIT 상태가 되는데 이 것의 양이 60초간 지속 된다는 것을 가정하고 이 값을 충분히 높여 주는 것이 좋음.  
