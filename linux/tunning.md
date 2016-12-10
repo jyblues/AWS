@@ -81,6 +81,12 @@ net.ipv4.tcp_tw_reuse=1
 
 ```
 
+* local port 확장
+```
+net.ipv4.ip_local_port_range = 1024    60999
+```
+
+
 
 * 브로드케스트에 응답하지 않게 한다.
   Smurf 공격을 예방할 수 있다.
