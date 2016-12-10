@@ -31,7 +31,7 @@
 
 
 ```
-# vi /etc/security/sysctl.conf  
+# vi /etc/sysctl.conf  
 
 net.core.netdev_max_backlog=30000
 ```
@@ -40,7 +40,7 @@ net.core.netdev_max_backlog=30000
 
 
 ```
-# vi /etc/security/sysctl.conf  
+# vi /etc/sysctl.conf  
 
 net.core.somaxconn=1024
 
@@ -52,7 +52,7 @@ net.core.somaxconn=1024
 
 
 ```
-# vi /etc/security/sysctl.conf  
+# vi /etc/sysctl.conf  
 
 net.ipv4.tcp_max_tw_buckets=1800000
 
@@ -63,7 +63,7 @@ net.ipv4.tcp_max_tw_buckets=1800000
 
 
 ```
-# vi /etc/security/sysctl.conf  
+# vi /etc/sysctl.conf  
 
 net.ipv4.tcp_timestamps=1
 net.ipv4.tcp_tw_reuse=1
