@@ -15,3 +15,10 @@ vi /etc/redis.conf
 
 #### Source 로 설치
 링크 : https://medium.com/@andrewcbass/install-redis-v3-2-on-aws-ec2-instance-93259d40a3ce#.nuxrmv1av
+
+```
+wget https://github.com/antirez/redis/archive/2.8.24.tar.gz
+tar xvfz 2.8.24.tar.gz
+cd redis-2.8.24/
+make
+```
