@@ -23,16 +23,11 @@ tar xvfz 2.8.24.tar.gz
 cd redis-2.8.24/
 make
 sudo make install
-sudo mkdir -p /etc/redis /var/lib/redis /var/log/redis
-sudo cp src/redis-server src/redis-cli /usr/local/bin
-sudo cp redis.conf /etc/redis/redis.conf
-sudo vi /etc/redis/redis.conf
+cd redis-2.8.24/utils
+./install_server.sh
 ```
 
 ##### configure a redis.conf
 ```
 bind 127.0.0.1                                //line 61
-daemonize yes                                 //line 127
-logfile "/var/log/redis.log"             //line 162
-dir /var/log/redis                           //line 246
 ```
