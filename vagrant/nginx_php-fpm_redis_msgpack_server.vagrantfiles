@@ -23,8 +23,20 @@ yum install -y git-core zlib zlib-devel gcc-c++ patch readline readline-devel li
 
 timedatectl set-timezone Asia/Seoul
 
-rpm -ivh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
-yum -y install nginx
+# rpm -ivh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
+# yum -y install nginx
+
+systemctl start nginx
+systemctl enable nginx
+
+
+wget http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+rpm -Uvh remi-release-7.rpm
+yum install yum-utils -y
+yum-config-manager --enable remi-php71
+
+yum --enablerepo=remi,remi-php71 install php-fpm php-common
+yum --enablerepo=remi,remi-php71 install php-opcache php-pecl-apcu php-cli php-pear php-pdo php-mysqlnd php-pgsql php-pecl-mongodb php-pecl-redis php-pecl-memcache php-pecl-memcached php-gd php-mbstring php-mcrypt php-xml
 
 
 
@@ -49,9 +61,10 @@ yum -y install nginx
 # systemctl enable nginx.service
 # systemctl start nginx.service
 
-# firewall-cmd --permanent --zone=public --add-service=http
-# firewall-cmd --permanent --zone=public --add-service=https
-# firewall-cmd --reload
+firewall-cmd --permanent --zone=public --add-service=http
+firewall-cmd --permanent --zone=public --add-service=https
+firewall-cmd --reload
+
 # yum -y install php php-fpm php-devel php-common php-cli php-pdo php-mysql php-xml php-gd php-mbstring php-pear php-mcrypt php-pecl-zendopcache
 # yum install php-pecl-redis
 # yum install php-pecl-igbinary
