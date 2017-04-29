@@ -29,3 +29,9 @@ python get-pip.py
 ```
 
 ### Flask를 설치합니다.
+```
+# pip install Flask
+....
+{directories}/app/venv/build/Flask/setup.py
+....
+```
