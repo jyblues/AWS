@@ -9,6 +9,11 @@ rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 yum install python-pip
 ```
 
+### 필요하면 pip를 업그레이드 합니다.
+```
+pip install --upgrade pip
+```
+
 
 ### 수동으로 설치하기
 참조 : https://pip.pypa.io/en/latest/installing.html
@@ -23,3 +28,4 @@ curl -k -O https://bootstrap.pypa.io/get-pip.py
 python get-pip.py
 ```
 
+### Flask를 설치합니다.
