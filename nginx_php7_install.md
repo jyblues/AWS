@@ -1,5 +1,5 @@
 
-# nginx, php7, php-redis, php-msgpack 설치 방버버
+# nginx, php7, php-redis, php-msgpack 설치 방법
 
 ## nginx 설치
 
