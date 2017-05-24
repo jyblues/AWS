@@ -1,6 +1,31 @@
 
 # nginx, php7, php-redis, php-msgpack 설치 방법
 
+## OS update
+```
+yum update
+yum upgrade
+```
+
+## remi repository 설정
+```
+yum install -y wget
+yum -y install epel-release
+wget http://rpms.famillecollet.com/enterprise/remi-release-7.rpm
+rpm -ivh remi-release-7.rpm
+```
+
+## 방화벽 시작 및 daemon 등록
+```
+systemctl start firewalld
+systemctl enable firewalld
+```
+
+## 기본 필요한 package 설치
+```
+yum install -y git-core zlib zlib-devel gcc-c++ patch readline readline-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison curl sqlite-devel tcl vim unzip 
+```
+
 ## nginx 설치
 
 ### /etc/nginx/conf.d/default.conf
@@ -122,7 +147,9 @@ export MANPATH=/opt/remi/php70/root/usr/share/man:${MANPATH}
 ```
 
 ### PHP 버전 확인
+```
 php -v
+```
 
 
 
@@ -154,12 +181,57 @@ ExecReload=/bin/kill -USR2 $MAINPID
 WantedBy=multi-user.target
 ```
 
+### /usr/share/nginx/html 폴더 권한 설정
+```
+chown -R nginx:nginx /usr/share/nginx/html/
+```
+
 ### PHP-FPM 시작 및 daemon 등록
+```
 sudo systemctl start php-fpm
 sudo systemctl enable php-fpm
+```
 
 
 ## php-redis 설치
+```
+git clone -b php7 https://github.com/phpredis/phpredis.git
+cd phpredis/
+/opt/remi/php70/root/usr/bin/phpize
+./configure --with-php-config=/opt/remi/php70/root/usr/bin/php-config
+make && make install
+make test
+echo "extension=redis.so" > /etc/opt/remi/php70/php.d/redis.ini
+```
+
+## php-msgpack 설치
+```
+wget https://github.com/msgpack/msgpack-php/zipball/master -O msgpack-php.zip
+unzip msgpack-php.zip
+cd msgpack-msgpack-php-e616221/
+/opt/remi/php70/root/usr/bin/phpize
+./configure
+make && make install
+make test
+echo extension=msgpack.so > /etc/opt/remi/php70/php.d/msgpack.ini 
+```
+
+## PHP-FPM 재시작
+```
+sudo systemctl start php-fpm
+```
+
+## local cache용 redis server 설치
+```
+cd ~
+wget http://download.redis.io/releases/redis-2.8.24.tar.gz
+tar xzvf redis-2.8.24.tar.gz
+cd redis-2.8.24
+make
+make install
+# update-rc.d redis-server defaults
+# /etc/init.d/redis-server start
+```
 
 ## python pip 설치
 
