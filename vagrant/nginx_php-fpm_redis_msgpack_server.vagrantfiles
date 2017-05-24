@@ -21,7 +21,7 @@ rpm -ivh remi-release-7.rpm
 systemctl start firewalld
 systemctl enable firewalld
 
-yum install -y git-core zlib zlib-devel gcc-c++ patch readline readline-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison curl sqlite-devel tcl vim
+yum install -y git-core zlib zlib-devel gcc-c++ patch readline readline-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison curl sqlite-devel tcl vim unzip 
 
 #rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 #rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
@@ -31,17 +31,17 @@ timedatectl set-timezone Asia/Seoul
 # rpm -ivh http://nginx.org/packages/centos/7/noarch/RPMS/nginx-release-centos-7-0.el7.ngx.noarch.rpm
 # yum -y install nginx
 
-systemctl start nginx
-systemctl enable nginx
+# systemctl start nginx
+# systemctl enable nginx
 
 
-wget http://rpms.remirepo.net/enterprise/remi-release-7.rpm
-rpm -Uvh remi-release-7.rpm
-yum install yum-utils -y
-yum-config-manager --enable remi-php71
+# wget http://rpms.remirepo.net/enterprise/remi-release-7.rpm
+# rpm -Uvh remi-release-7.rpm
+# yum install yum-utils -y
+# yum-config-manager --enable remi-php71
 
-yum --enablerepo=remi,remi-php71 install php-fpm php-common
-yum --enablerepo=remi,remi-php71 install php-opcache php-pecl-apcu php-cli php-pear php-pdo php-mysqlnd php-pgsql php-pecl-mongodb php-pecl-redis php-pecl-memcache php-pecl-memcached php-gd php-mbstring php-mcrypt php-xml
+# yum --enablerepo=remi,remi-php71 install php-fpm php-common
+# yum --enablerepo=remi,remi-php71 install php-opcache php-pecl-apcu php-cli php-pear php-pdo php-mysqlnd php-pgsql php-pecl-mongodb php-pecl-redis php-pecl-memcache php-pecl-memcached php-gd php-mbstring php-mcrypt php-xml
 
 
 
@@ -127,7 +127,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
-  config.vm.box_url = "http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-7.2_chef-provisionerless.box"
+  #config.vm.box_url = "http://opscode-vm-bento.s3.amazonaws.com/vagrant/virtualbox/opscode_centos-7.2_chef-provisionerless.box"
+  config.vm.box_url = "http://cloud.centos.org/centos/7/vagrant/x86_64/images/CentOS-7-x86_64-Vagrant-1704_01.VirtualBox.box"
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
@@ -141,7 +142,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
   # your network.
-  config.vm.network :public_network
+  #config.vm.network "public_network", :bridge => "eth0", ip: "192.168.0.201", :netmask => "255.255.255.0", auto_config: false
 
   # If true, then any SSH connections made will enable agent forwarding.
   # Default value: false
@@ -228,10 +229,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # chef-validator, unless you changed the configuration.
   #
   #   chef.validation_client_name = "ORGNAME-validator"
-  	config.vm.define :delta_dev_server do |cfg|
-	  config.vm.provider "virtualbox" do |v|
-	    v.name = 'delta_dev_server'
-	  end
-	end
+    config.vm.define :delta_dev_server do |cfg|
+    config.vm.provider "virtualbox" do |v|
+      v.name = 'delta_dev_server'
+    end
+  end
   config.vm.provision "shell", inline: $INSTALL_SCRIPT
 end
