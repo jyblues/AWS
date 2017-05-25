@@ -3,30 +3,30 @@
 
 ## OS update
 ```
-yum update
-yum upgrade
+sudo yum update
+sudo yum upgrade
 ```
 
 ## remi repository 설정
 ```
-yum install -y wget
-yum -y install epel-release
+sudo yum install -y wget
+sudo yum -y install epel-release
 ```
 
 ## 방화벽 시작 및 daemon 등록
 ```
-systemctl start firewalld
-systemctl enable firewalld
+sudo systemctl start firewalld
+sudo systemctl enable firewalld
 ```
 
 ## timezone 설정
 ```
-timedatectl set-timezone Asia/Seoul
+sudo timedatectl set-timezone Asia/Seoul
 ```
 
 ## 기본 필요한 package 설치
 ```
-yum install -y git-core zlib zlib-devel gcc-c++ patch readline readline-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison curl sqlite-devel tcl vim unzip 
+sudo yum install -y git-core zlib zlib-devel gcc-c++ patch readline readline-devel libyaml-devel libffi-devel openssl-devel make bzip2 autoconf automake libtool bison curl sqlite-devel tcl vim unzip 
 ```
 
 ## nginx 설치
@@ -45,11 +45,11 @@ sudo systemctl enable nginx
 
 ```
 wget http://rpms.remirepo.net/enterprise/remi-release-7.rpm
-rpm -Uvh remi-release-7.rpm
-yum install yum-utils -y
-yum-config-manager --enable remi-php71
+sudo rpm -Uvh remi-release-7.rpm
+sudo yum install yum-utils -y
+sudo yum-config-manager --enable remi-php71
 
-yum --enablerepo=remi,remi-php71 install -y php php-mcrypt php-mbstring php-fpm php-pecl-xdebug php-pecl-redis php-mysqlnd php-bcmath php-pecl-zip php-xmlrpc php-xml php-pecl-http php-pecl-http-devel php-opcache php-pear php-pdo
+sudo yum --enablerepo=remi,remi-php71 install -y php php-mcrypt php-mbstring php-fpm php-pecl-xdebug php-pecl-redis php-mysqlnd php-bcmath php-pecl-zip php-xmlrpc php-xml php-pecl-http php-pecl-http-devel php-opcache php-pear php-pdo
 ```
 
 
@@ -169,7 +169,7 @@ echo '?>' >> /usr/share/nginx/html/info.php
 
 ### /usr/share/nginx/html 폴더 권한 설정
 ```
-chown -R nginx:nginx /usr/share/nginx/html/
+sudo chown -R nginx:nginx /usr/share/nginx/html/
 ```
 
 ### PHP-FPM 시작 및 daemon 등록
@@ -184,17 +184,17 @@ sudo systemctl enable php-fpm
 cd ~
 git clone -b php7 https://github.com/phpredis/phpredis.git
 cd phpredis/
-phpize
-./configure
-make && make install
-make test
-echo "extension=redis.so" > /etc/php.d/redis.ini
+sudo phpize
+sudo ./configure
+sudo make && make install
+sudo make test
+sudo echo "extension=redis.so" > /etc/php.d/redis.ini
 ```
 
 ## php-msgpack 설치 : 참고(https://github.com/msgpack/msgpack-php)
 ```
-pecl install msgpack
-echo extension=msgpack.so > /etc/php.d/msgpack.ini 
+sudo pecl install msgpack
+sudo echo extension=msgpack.so > /etc/php.d/msgpack.ini 
 ```
 
 ## PHP-FPM 재시작
@@ -208,8 +208,8 @@ cd ~
 wget http://download.redis.io/releases/redis-2.8.24.tar.gz
 tar xzvf redis-2.8.24.tar.gz
 cd redis-2.8.24
-make
-make install
+sudo make
+sudo make install
 # update-rc.d redis-server defaults
 # /etc/init.d/redis-server start
 ```
