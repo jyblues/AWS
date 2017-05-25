@@ -53,8 +53,8 @@ yum --enablerepo=remi,remi-php71 install -y php php-mcrypt php-mbstring php-fpm 
 ```
 
 
-## nginx configuration 변경
-### /etc/nginx/conf.d/default.conf
+## nginx configuration 에 추가 혹은 변경
+### /etc/nginx/nginx.conf
 
 ```
 server {
@@ -160,23 +160,11 @@ listen.group = nginx
 listen.mode = 0666
 ```
 
-
-### /etc/systemd/system/php-fpm.service
+### php 웹 페이지 테스트
 ```
-[Unit]
-Description=The PHP FastCGI Process Manager
-After=syslog.target network.target
-
-[Service]
-Type=simple
-PIDFile=/var/run/php-fpm.pid
-ExecStart=/opt/remi/php70/root/usr/sbin/php-fpm --nodaemonize --fpm-config /etc/opt/remi/php70/php-fpm.conf
-ExecReload=/bin/kill -USR2 $MAINPID
-
-
-[Install]
-WantedBy=multi-user.target
-```
+echo '<?php' >> /usr/share/nginx/html/info.php
+echo 'phpinfo();' >> /usr/share/nginx/html/info.php
+echo '?>' >> /usr/share/nginx/html/info.php
 
 ### /usr/share/nginx/html 폴더 권한 설정
 ```
