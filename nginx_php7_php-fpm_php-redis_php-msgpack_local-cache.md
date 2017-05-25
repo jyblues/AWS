@@ -213,23 +213,21 @@ sudo systemctl restart php-fpm
 
 ## local cache용 redis server 설치
 ```
-cd ~
-wget http://download.redis.io/releases/redis-2.8.24.tar.gz
-tar xzvf redis-2.8.24.tar.gz
-cd redis-2.8.24
-sudo make
-sudo make install
-# update-rc.d redis-server defaults
-# /etc/init.d/redis-server start
+sudo yum -y install redis --enablerepo=remi --disableplugin=priorities
+sudo systemctl start redis
+sudo systemctl enable redis
 ```
 
-## python pip 설치
+## python pip 설치 : 링크(http://zetawiki.com/wiki/CentOS_python-pip_%EC%84%A4%EC%B9%98)
+```
+sudo yum install -y python-pip
+sudo pip install --upgrade pip
+```
 
-링크 - http://zetawiki.com/wiki/CentOS_python-pip_%EC%84%A4%EC%B9%98
-
-## redis-py 설치
-
-링크 - https://redislabs.com/python-redis
+## redis-py 설치 : 링크(https://redislabs.com/python-redis)
+```
+sudo pip install redis
+```
 
 
 ## 외부 MySQL 사용 설정
