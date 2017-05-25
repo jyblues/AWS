@@ -62,7 +62,7 @@ server {
     server_name  localhost;
  
     # note that these lines are originally from the "location /" block
-    root   /usr/share/nginx/html;
+    root   /var/www/html;
     index index.php index.html index.htm;
  
     location / {
@@ -71,7 +71,7 @@ server {
     error_page 404 /404.html;
     error_page 500 502 503 504 /50x.html;
     location = /50x.html {
-        root /usr/share/nginx/html;
+        root /var/www/html;
     }
  
     location ~ \.php$ {
@@ -162,14 +162,14 @@ listen.mode = 0666
 
 ### php 테스트 웹 페이지 생성
 ```
-echo '<?php' >> /usr/share/nginx/html/info.php
-echo 'phpinfo();' >> /usr/share/nginx/html/info.php
-echo '?>' >> /usr/share/nginx/html/info.php
+echo '<?php' >> /var/www/html/info.php
+echo 'phpinfo();' >> /var/www/html/info.php
+echo '?>' >> /var/www/html/info.php
 ```
 
-### /usr/share/nginx/html 폴더 권한 설정
+### /var/www/html 폴더 권한 설정
 ```
-sudo chown -R nginx:nginx /usr/share/nginx/html/
+sudo chown -R nginx:nginx /var/www/html/
 ```
 
 ### PHP-FPM 시작 및 daemon 등록
@@ -199,11 +199,11 @@ sudo echo extension=msgpack.so > /etc/php.d/msgpack.ini
 
 ### msgpack 테스트 웹 페이지 생성
 ```
-echo '<?php' >> /usr/share/nginx/html/test_msgpack.php
-echo '$data = array(0=>1,1=>2,2=>3);' >> /usr/share/nginx/html/test_msgpack.php
-echo '$msg = msgpack_pack($data);' >> /usr/share/nginx/html/test_msgpack.php
-echo '$data = msgpack_unpack($msg);' >> /usr/share/nginx/html/test_msgpack.php
-echo '?>' >> /usr/share/nginx/html/test_msgpack.php
+echo '<?php' >> /var/www/html/test_msgpack.php
+echo '$data = array(0=>1,1=>2,2=>3);' >> /var/www/html/test_msgpack.php
+echo '$msg = msgpack_pack($data);' >> /var/www/html/test_msgpack.php
+echo '$data = msgpack_unpack($msg);' >> /var/www/html/test_msgpack.php
+echo '?>' >> /var/www/html/test_msgpack.php
 ```
 
 ## PHP-FPM 재시작
