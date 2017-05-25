@@ -181,6 +181,7 @@ sudo systemctl enable php-fpm
 
 ## php-redis 설치
 ```
+cd ~
 git clone -b php7 https://github.com/phpredis/phpredis.git
 cd phpredis/
 /opt/remi/php70/root/usr/bin/phpize
@@ -192,6 +193,7 @@ echo "extension=redis.so" > /etc/opt/remi/php70/php.d/redis.ini
 
 ## php-msgpack 설치
 ```
+cd ~
 wget https://github.com/msgpack/msgpack-php/zipball/master -O msgpack-php.zip
 unzip msgpack-php.zip
 cd msgpack-msgpack-php-e616221/
