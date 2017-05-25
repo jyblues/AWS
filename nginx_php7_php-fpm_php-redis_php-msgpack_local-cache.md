@@ -165,6 +165,7 @@ listen.mode = 0666
 echo '<?php' >> /usr/share/nginx/html/info.php
 echo 'phpinfo();' >> /usr/share/nginx/html/info.php
 echo '?>' >> /usr/share/nginx/html/info.php
+```
 
 ### /usr/share/nginx/html 폴더 권한 설정
 ```
