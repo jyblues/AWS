@@ -160,7 +160,7 @@ listen.group = nginx
 listen.mode = 0666
 ```
 
-### php 웹 페이지 테스트
+### php 테스트 웹 페이지 생성
 ```
 echo '<?php' >> /usr/share/nginx/html/info.php
 echo 'phpinfo();' >> /usr/share/nginx/html/info.php
@@ -195,6 +195,15 @@ sudo echo "extension=redis.so" > /etc/php.d/redis.ini
 ```
 sudo pecl install msgpack
 sudo echo extension=msgpack.so > /etc/php.d/msgpack.ini 
+```
+
+### msgpack 테스트 웹 페이지 생성
+```
+echo '<?php' >> /usr/share/nginx/html/test_msgpack.php
+echo '$data = array(0=>1,1=>2,2=>3);' >> /usr/share/nginx/html/test_msgpack.php
+echo '$msg = msgpack_pack($data);' >> /usr/share/nginx/html/test_msgpack.php
+echo '$data = msgpack_unpack($msg);' >> /usr/share/nginx/html/test_msgpack.php
+echo '?>' >> /usr/share/nginx/html/test_msgpack.php
 ```
 
 ## PHP-FPM 재시작
