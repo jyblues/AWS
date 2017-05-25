@@ -157,7 +157,7 @@ group = nginx
 listen = /var/run/php-fpm/php-fpm.sock
 listen.owner = nginx
 listen.group = nginx
-;listen.mode = 0666
+listen.mode = 0666
 ```
 
 
