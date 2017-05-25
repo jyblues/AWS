@@ -184,29 +184,22 @@ sudo systemctl enable php-fpm
 cd ~
 git clone -b php7 https://github.com/phpredis/phpredis.git
 cd phpredis/
-/opt/remi/php70/root/usr/bin/phpize
-./configure --with-php-config=/opt/remi/php70/root/usr/bin/php-config
-make && make install
-make test
-echo "extension=redis.so" > /etc/opt/remi/php70/php.d/redis.ini
-```
-
-## php-msgpack 설치
-```
-cd ~
-wget https://github.com/msgpack/msgpack-php/zipball/master -O msgpack-php.zip
-unzip msgpack-php.zip
-cd msgpack-msgpack-php-e616221/
-/opt/remi/php70/root/usr/bin/phpize
+phpize
 ./configure
 make && make install
 make test
-echo extension=msgpack.so > /etc/opt/remi/php70/php.d/msgpack.ini 
+echo "extension=redis.so" > /etc/php.d/redis.ini
+```
+
+## php-msgpack 설치 : 참고(https://github.com/msgpack/msgpack-php)
+```
+pecl install msgpack
+echo extension=msgpack.so > /etc/php.d/msgpack.ini 
 ```
 
 ## PHP-FPM 재시작
 ```
-sudo systemctl start php-fpm
+sudo systemctl restart php-fpm
 ```
 
 ## local cache용 redis server 설치
