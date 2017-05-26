@@ -74,7 +74,8 @@ server {
         root /var/www/html;
     }
  
-    location ~ \.php$ {
+    #location ~ \.php$ {
+    location /index.php {
         try_files $uri =404;
         fastcgi_pass unix:/var/run/php-fpm/php-fpm.sock;
         fastcgi_index index.php;
