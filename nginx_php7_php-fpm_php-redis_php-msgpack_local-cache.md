@@ -149,7 +149,15 @@ http {
 php -v
 ```
 
+### /etc/php.ini
+```
+timezone = Asia/Seoul
+```
 
+### nginx 다시 시작
+```
+systemctl restart nginx
+```
 
 ### /etc/php-fpm.d/www.conf
 ```
