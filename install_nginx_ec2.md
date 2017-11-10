@@ -1,6 +1,7 @@
 ### installation
 
 ```
+yum clean all # 필요시
 yum update -y
 yum install -y nginx
 sudo yum -y install php55 php55-fpm php55-devel php55-common php55-cli php55-pdo php55-mysql php55-xml php55-gd php55-mbstring php-pear php55-mysqlnd php55-mcrypt php55-pecl-zendopcache
