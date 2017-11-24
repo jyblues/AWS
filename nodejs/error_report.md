@@ -25,6 +25,13 @@ http://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/instance-store-swap-vol
 
 * 해결 방법 - 2
 swap file을 생성합니다. :)
+원본 : http://wincloud.link/pages/viewpage.action?pageId=8192019
+
+또한 EBS 전용 인스턴스가 아닌 m3.large 급 정도만 되면 재부팅시마다 초기화되는 추가 Instance Storage를 제공해준다. (속도도 EBS보다 빠름)
+따라서 EBS말고 Instance Storage에 swap을 만들어주면 효율적이다. Instance Storage가 제공되지 않는 인스턴스에서는 EBS에 만들어야 한다.
+물론 t1.micro 같은 Free Tier 인스턴스는 제공 메모리 613MB 웬만한 서비스를 하나 돌려볼려면 swap을 추가하는 것은 필수라고 할 수 있다.
+
+가장 많이 사용할 것으로 보이는 t2.micro Amazon Linux (메모리 996MB) 기준으로 작업
 
 ```
 $ sudo dd if=/dev/zero of=/swapfile bs=1M count=512     # 512MB 스왑용 파일 생성
