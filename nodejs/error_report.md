@@ -21,10 +21,12 @@ npm ERR!     /root/.npm/_logs/2017-11-24T03_05_29_314Z-debug.log
 ```
 
 * 해결 방법 - 1(AWS 공식 문서)
+
 http://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/instance-store-swap-volumes.html
 
 * 해결 방법 - 2
-swap file을 생성합니다. :)
+
+swap file을 생성합니다.
 원본 : http://wincloud.link/pages/viewpage.action?pageId=8192019
 
 또한 EBS 전용 인스턴스가 아닌 m3.large 급 정도만 되면 재부팅시마다 초기화되는 추가 Instance Storage를 제공해준다. (속도도 EBS보다 빠름)
