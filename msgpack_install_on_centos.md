@@ -2,17 +2,22 @@
 
 ```
 $ wget https://github.com/msgpack/msgpack-php/archive/msgpack-0.5.7.zip
+$ unzip msgpack-php.zip 
+$ cd msgpack-msgpack-php-da24be3/
 ```
 
 * PHP 7.x.x 
 
 ```
 $ wget https://github.com/msgpack/msgpack-php/zipball/master -O msgpack-php.zip
-```
-
-```
 $ unzip msgpack-php.zip 
 $ cd msgpack-msgpack-php-da24be3/
+```
+or
+```
+git clone https://github.com/msgpack/msgpack-php.git
+```
+
 $ phpize
 Configuring for:
 PHP Api Version:         20121113
