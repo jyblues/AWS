@@ -18,6 +18,8 @@ or
 git clone https://github.com/msgpack/msgpack-php.git
 ```
 
+* Install
+```
 $ phpize
 Configuring for:
 PHP Api Version:         20121113
