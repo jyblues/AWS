@@ -28,6 +28,7 @@ http://docs.aws.amazon.com/ko_kr/AWSEC2/latest/UserGuide/instance-store-swap-vol
 
 swap file을 생성합니다.
 원본 : http://wincloud.link/pages/viewpage.action?pageId=8192019
+AWS Reference : https://aws.amazon.com/ko/premiumsupport/knowledge-center/ec2-memory-swap-file/
 
 또한 EBS 전용 인스턴스가 아닌 m3.large 급 정도만 되면 재부팅시마다 초기화되는 추가 Instance Storage를 제공해준다. (속도도 EBS보다 빠름)
 따라서 EBS말고 Instance Storage에 swap을 만들어주면 효율적이다. Instance Storage가 제공되지 않는 인스턴스에서는 EBS에 만들어야 한다.
